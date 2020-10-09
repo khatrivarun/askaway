@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+
+    <div>
+        <h2>Register New User.</h2>
+    </div>
+
+    <form action="." method="post">
+        {% csrf_token %}
+        <fieldset>
+            {% for field in form %}
+            <div>
+                {{ field.label_tag }}
+                {{ field }}
+                {% for error in field.errors %}
+                <div>{{ error }}</div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+
+    <div>
+        <button>
+            <a href="/user/login/" class="no-link-button">
+                Login
+            </a>
+        </button>
+    </div>
+</div>
+
+{% endblock %}
