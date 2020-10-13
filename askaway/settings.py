@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user'
+    'user',
+    'questions_answers'
 ]
 
 MIDDLEWARE = [
@@ -117,3 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/questions/all/'
+LOGOUT_REDIRECT_URL = '/user/login/'
+LOGIN_URL = '/user/login/'
