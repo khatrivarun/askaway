@@ -5,5 +5,4 @@
 # Editors
 .idea
 .vscode
-
-/askaway/settings.py
+askaway/settings.py
