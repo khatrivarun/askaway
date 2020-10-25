@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="qAndA">
+    <div class="questionDiv">
+        <p class="questionPara">{{ question.question }}</p>
+        <p class="questioner">By {{ question.user.first_name }} {{ question.user.last_name }}</p>
+    </div>
+
+    {% for answer in answers %}
+
+    <div class="answerDiv">
+        <p class="answerPara">{{ answer.answer }}</p>
+        <p class="answerer">By {{ answer.user.first_name }} {{ answer.user.last_name }}</p>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

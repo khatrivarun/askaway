@@ -6,7 +6,7 @@
 <div>
 
     <div>
-        <h1 style="text-align: center">Login</h1>
+        <h1 style="text-align: center">Create New Question</h1>
     </div>
 
     <div style="width:20%; margin: 30px auto;">
@@ -15,7 +15,7 @@
             <fieldset>
                 {% for field in form %}
                 <div class="form-group">
-                    {{ field.label_tag }}
+                    {{ field.label_tag}}
                     {{ field | add_class:"form-control" }}
                     {% for error in field.errors %}
                     <div style="color: red">{{ error }}</div>
@@ -28,9 +28,7 @@
                 {% endfor %}
 
                 <div class="form-group">
-                    <button class="btn btn-lg btn-default btn-block btn-primary">
-                        Login!
-                    </button>
+                    <input type="submit" value="Submit Question!" class="btn btn-lg btn-default btn-block btn-primary"/>
                 </div>
             </fieldset>
         </form>
