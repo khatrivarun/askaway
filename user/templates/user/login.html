@@ -1,38 +1,39 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 
 {% block content %}
 
 <div>
 
     <div>
-        <h2>Login</h2>
+        <h1 style="text-align: center">Login</h1>
     </div>
 
-    <form action="." method="post">
-        {% csrf_token %}
-        <fieldset>
-            {% for field in form %}
-            <div>
-                {{ field.label_tag }}
-                {{ field }}
-                {% for error in field.errors %}
-                <div>{{ error }}</div>
+    <div style="width:20%; margin: 30px auto;">
+        <form action="." method="post">
+            {% csrf_token %}
+            <fieldset>
+                {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag}}
+                    {{ field | add_class:"form-control" }}
+                    {% for error in field.errors %}
+                    <div style="color: red">{{ error }}</div>
+                    {% endfor %}
+                </div>
                 {% endfor %}
-            </div>
-            {% endfor %}
 
-            <div>
-                <button type="submit">Submit</button>
-            </div>
-        </fieldset>
-    </form>
+                {% for error in form.non_field_errors %}
+                <div style="color: red">{{ error }}</div>
+                {% endfor %}
 
-    <div class="item">
-        <button>
-            <a href="/user/register/">
-                Register For A New Account
-            </a>
-        </button>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-default btn-block btn-primary">
+                        Login!
+                    </button>
+                </div>
+            </fieldset>
+        </form>
     </div>
 
 </div>
