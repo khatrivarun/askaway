@@ -1,0 +1,46 @@
+.navbar-toggler {
+	background-color: rgb(197, 197, 197);
+}
+
+.qAndA {
+	width: 80%;
+	margin: auto;
+}
+
+.questionDiv {
+	border: 2px solid gray;
+	margin: auto;
+	padding-left: 20px;
+	background-color: rgb(224, 224, 224);
+	overflow: auto;
+	border-radius: 5px;
+}
+
+.questionPara {
+	/* border: 2px solid green; */
+	height: max-content;
+	width: max-content;
+	font-size: 1.5rem;
+}
+
+.questioner {
+	/* border: 2px solid green; */
+	border-radius: 5px;
+	width: max-content;
+	float: right;
+	margin-right: 20px;
+	margin-top: 0;
+}
+
+.answerDiv {
+	border: 2px solid gray;
+	margin: 10px 20px auto;
+	padding-left: 20px;
+	background-color: rgb(255, 255, 255);
+	overflow: auto;
+	border-radius: 5px;
+}
+
+.answerPara {
+	padding-top: 10px;
+}
