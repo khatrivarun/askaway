@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django import forms
 
@@ -137,18 +137,6 @@ class UpdateForm(forms.ModelForm):
 
 
 class DeleteAccountForm(forms.ModelForm):
-
-    def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user', None)
-        super(DeleteAccountForm, self).__init__(*args, **kwargs)
-
-    password = forms.CharField(
-        label='Password',
-        widget=forms.PasswordInput(attrs={'placeholder': 'Password'}),
-    )
-
-    def clean(self):
-        password = self.cleaned_data.get('password')
-
-        if not validate_password(password, user=self.user):
-            raise forms.ValidationError("Password does not match.")
+    class Meta:
+        model = User
+        fields = []

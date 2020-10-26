@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block styles %}
-
+<link rel="stylesheet" href="{% static 'css/all.css' %}"/>
 <style>
     .semi-body {
         background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
@@ -20,11 +20,7 @@
     }
 
 
-
-
 </style>
-
-<link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
 
 {% endblock %}
 
@@ -36,7 +32,7 @@
     {% for question in questions %}
     <div class="card card-style">
         <div class="card-header">
-            @{{ question.user.username }}
+            <a href="/user/view/{{ question.user.username }}">@{{ question.user.username }}</a>
         </div>
         <div class="card-body">
             <blockquote class="blockquote mb-0">

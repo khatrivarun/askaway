@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load get_item %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{% static 'css/base_temp.css' %}"/>
+
+<style>
+    body {
+	background: url(' {% static 'img/speechman.jpg' %} ');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: contain;
+	min-height: 100%;
+}
+
+
+
+
+
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="userDataDiv">
+    <h1>{{ display_user.first_name }} {{ display_user.last_name }}</h1>
+    <h3 class="headerTags">Questions by {{ display_user.first_name }} {{ display_user.last_name }}</h3>
+
+    {% for question in questions %}
+    <div class="questionsByUser">
+        <div class="card">
+            <div class="card-header">
+                {% if question.id in total_answers %}
+                {{total_answers|get_item:question.id}}
+                {% else %}
+                0
+                {% endif %}
+                Answers.
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>
+                        <a href="/questions/question/{{ question.slug }}">
+                            {{ question.question }}
+                        </a>
+                    </p>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <br>
+
+    <h3 class="headerTags">Answers by {{ display_user.first_name }} {{ display_user.last_name }}</h3>
+
+    {% for answer in answers %}
+    <div class="answersByUser">
+        <div class="card">
+            <h5 class="card-header">{{ answer.question.question }}</h5>
+            <div class="card-body">
+                <h5 class="card-title">{{ answer.answer }}</h5>
+                <p class="card-text">
+                    Number of Upvotes:
+                    {% if answer.id in total_votes %}
+                    {{total_votes|get_item:answer.id}}
+                    {% else %}
+                    0
+                    {% endif %}
+                </p>
+                <a href="/questions/question/{{ answer.question.slug }}" class="btn btn-primary">
+                    <i class="far fa-arrow-alt-circle-right"></i>
+                    Go to Question.
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
