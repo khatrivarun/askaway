@@ -1,0 +1,26 @@
+{% extends "base_bg.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<h1 class="main-header"><em>Newly Added Questions</em>:</h1>
+
+{% for question in questions %}
+<div class="card card-style">
+    <div class="card-header">
+        @{{ question.user.username }}
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <a href="/questions/question/{{ question.slug }}">
+                <p>{{ question.question }}</p>
+            </a>
+            <footer class="blockquote-footer">Description:
+                <cite title="Source Title">{{ question.description }}</cite>
+            </footer>
+        </blockquote>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

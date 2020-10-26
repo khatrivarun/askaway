@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AskAway</title>
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/base_bg.css' %}"/>
+    <style>
+        .semi-body {
+            background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+                url("{% static 'img/find.png' %}");
+
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-blend-mode: overlay;
+            height: 100%;
+        }
+        html,
+        body {
+            height: 100%;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="semi-body">
+    <nav
+            class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top"
+    >
+        <a class="navbar-brand" href=""><img src="{% static 'img/ask.png' %}" alt="logo"
+                                             style="width: 2em;height: 2em;">
+            AskAway</a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapsingContent"
+                aria-controls="collapsingContent"
+                aria-expanded="false"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsingContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="">Home</a>
+                </li>
+            </ul>
+
+            {% if user.is_authenticated %}
+
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="">Hello {{ user.first_name }} {{ user.last_name }}</a>
+                </li>
+
+                <li class="nav-item">
+                    <form action="/user/logout/" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Logout" class="btn btn-link">
+                    </form>
+                </li>
+            </ul>
+
+            {% else %}
+
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/login/">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/register/">Sign Up</a>
+                </li>
+            </ul>
+
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="after-nav">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

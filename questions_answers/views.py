@@ -11,7 +11,7 @@ from .models import Question, Answer, Vote
 def list_questions(request):
     list_of_questions = Question.objects.all()
     context = {'questions': list_of_questions}
-    template_name = ''
+    template_name = 'questions_answers/questions_all.html'
     return render(request, template_name, context)
 
 
