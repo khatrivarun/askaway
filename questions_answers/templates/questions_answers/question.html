@@ -7,26 +7,29 @@
 <div class="qAndA">
     <div class="questionDiv">
         <p class="questionPara">{{ question.question }}</p>
-        <p class="questioner">By {{ question.user.first_name }} {{ question.user.last_name }}</p>
+        <p class="questioner">By {{ question.user.username }}</p>
     </div>
 
     {% for answer in answers %}
 
     <div class="answerDiv">
         <p class="answerPara">{{ answer.answer }}</p>
-
-        {% if answer.id in total_votes %}
-        <p>{{total_votes|get_item:answer.id}} votes</p>
-        {% else %}
-        <p>0 votes</p>
-        {% endif %}
-
-        {% if answer in voted %}
-        <p>Voted</p>
-        {% else %}
-        <p>Not Voted</p>
-        {% endif %}
-
+        <form style="display: inline;" action="/questions/question/{{ question.slug }}/noice/{{ answer.id }}">
+            <button class="upvoteButton"><i class="far fa-lightbulb"></i>
+                {% if answer in voted %}
+                Noice'd
+                {% else %}
+                Noice
+                {% endif %}
+            </button>
+        </form>
+        <span class="upvoteCounter">Number of Votes:
+            {% if answer.id in total_votes %}
+            {{total_votes|get_item:answer.id}}
+            {% else %}
+            0
+            {% endif %}
+        </span>
         <p class="answerer">By {{ answer.user.username }}</p>
     </div>
 
