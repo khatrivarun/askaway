@@ -2,8 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import login, update_session_auth_hash
-from .forms import RegistrationForm, LoginForm, UpdateForm
+from django.contrib.auth import update_session_auth_hash
+from .forms import RegistrationForm, UpdateForm
 
 
 def register(request):
@@ -13,25 +13,9 @@ def register(request):
 
     if form.is_valid():
         form.save()
-        redirect('/index')
+        return redirect('/user/login')
     else:
         form = RegistrationForm()
-
-    return render(request, template_name, context)
-
-
-def signin(request):
-    form = LoginForm(request.POST or None)
-    template_name = "user/login.html"
-    context = {"form": form}
-
-    if form.is_valid():
-        user = form.login(request)
-        if user:
-            login(request, user=user)
-            redirect('/')
-    else:
-        form = LoginForm()
 
     return render(request, template_name, context)
 
@@ -45,7 +29,7 @@ def update(request):
 
     if form.is_valid():
         form.save()
-        redirect('/index')
+        redirect('/')
     else:
         form = UpdateForm(request.POST or None, instance=user)
 
@@ -60,7 +44,7 @@ def update_password(request):
     if form.is_valid():
         user = form.save()
         update_session_auth_hash(request, user)
-        return redirect('/index')
+        return redirect('/')
     else:
         form = PasswordChangeForm(request.user)
 
