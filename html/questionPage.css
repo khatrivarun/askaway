@@ -6,13 +6,41 @@
 	margin-bottom: 20px;
 }
 
+.navbar-custom {
+	background: linear-gradient(180deg, #343a40ff, #343a40cc);
+}
+
+body {
+	background: url('answer_alt.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: contain;
+	min-height: 100%;
+}
+
+.jumbotron {
+	padding-bottom: 1em;
+	padding-top: 0;
+	/* margin-top: 1em; */
+	background: none;
+	text-shadow: 2px 2px 1px rgba(200, 200, 200, 1);
+	/* color: #343a40 */
+	background: linear-gradient(#343a40cc, #ffffff00);
+}
+
 .questionDiv {
 	border: 2px solid gray;
+	padding-top: 10px;
 	margin: auto;
 	padding-left: 20px;
-	background-color: rgb(224, 224, 224);
+	/* background-color: rgb(224, 224, 224); */
 	overflow: auto;
 	border-radius: 5px;
+	background: linear-gradient(rgba(221, 221, 221, 0.7), rgba(221, 221, 221, 0.7));
 }
 
 .upvoteButton {
@@ -49,14 +77,16 @@
 	margin-top: 0;
 }
 
-.answerDiv {
+.card {
 	border: 2px solid gray;
 	margin: 10px 20px auto;
-	padding-left: 20px;
-	padding-bottom: 15px;
-	background-color: rgb(255, 255, 255);
 	overflow: auto;
 	border-radius: 5px;
+	background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+}
+
+.card-header {
+	font-size: 0.95rem;
 }
 
 .answerPara {
@@ -69,14 +99,20 @@
 	margin: 10px 20px auto;
 	padding-left: 20px;
 	padding-bottom: 10px;
+	padding-top: 10px;
 	background-color: rgb(255, 255, 255);
 	overflow: auto;
 	border-radius: 5px;
+	background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
 }
 
 .userAnswerHeader {
 	/* border: 2px solid pink; */
 	padding-left: 0;
+}
+
+textarea {
+	background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
 }
 
 #submitAnswer {
