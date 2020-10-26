@@ -2,8 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import update_session_auth_hash
-from .forms import RegistrationForm, UpdateForm
+from django.contrib.auth import update_session_auth_hash, logout
+from .forms import RegistrationForm, UpdateForm, DeleteAccountForm
 
 
 def register(request):
@@ -66,6 +66,7 @@ def update(request):
     return render(request, template_name, context)
 
 
+@login_required
 def update_password(request):
     """
     User Password Update Function.
@@ -92,6 +93,41 @@ def update_password(request):
 
     # Setting up the template to render on and context
     template_name = "user/update_password.html"
+    context = {"form": form}
+
+    # Rendering the form.
+    return render(request, template_name, context)
+
+
+@login_required
+def delete_account(request):
+    """
+    User Delete Function
+    """
+
+    # Getting the user.
+    user = get_object_or_404(User, username=request.user.username)
+
+    # Preparing the form.
+    form = DeleteAccountForm(request.POST or None)
+
+    # Checking if the form is valid
+    if form.is_valid():
+
+        # Deleting user object
+        user.delete()
+
+        # Logging out from the seesion.
+        logout(request)
+
+        # Redirecting to register page
+        return redirect('/user/register')
+    else:
+        # Cleaning out invalid values
+        form = DeleteAccountForm()
+
+    # Setting up the template to render on and context
+    template_name = "user/delete_account.html"
     context = {"form": form}
 
     # Rendering the form.
