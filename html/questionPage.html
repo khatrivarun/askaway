@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <a class="navbar-brand" href="index.html"><img src="ask.png" alt="logo" style="width: 2em;height: 2em;">
             AskAway</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingContent"
@@ -37,14 +37,25 @@
             </ul>
         </div>
     </nav>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container align-self-center">
+            <h1 class="display-4">
+                <img src="ask_1.png" alt="logo"> AskAway
+            </h1>
+            <p class="lead">
+                The perfect place to find the answer to all your burning
+                questions!
 
+            </p>
+        </div>
+    </div>
     <div class="qAndA">
         <div class="questionDiv">
             <p class="questionPara">How do F1 Crash Barriers prevent serious injuries?</p>
             <p class="questioner">By AbbasSavvy</p>
         </div>
 
-        <div class="answerDiv">
+        <!-- <div class="answerDiv">
             <p class="answerPara">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse amet optio ducimus
                 tempora.
                 Molestiae nulla debitis beatae eos dignissimos odit ea, assumenda consequuntur eum iure quisquam libero
@@ -52,26 +63,21 @@
                 nesciunt corporis? Ea molestias voluptates veniam dolorum?
             </p>
             <div class="upvoteButton"><i class="far fa-lightbulb"></i> Noice</div>
-            <span class="upvoteCounter">Number of Votes: 69</span>
+            <span class="upvoteCounter">Number of Votes: 69</span> -->
+        <div class="card">
+            <h5 class="card-header">By AbbasSavvy</h5>
+            <div class="card-body">
+                <h5 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit quos dicta, dolore
+                    et ex aut rem vel ipsam error ducimus?</h5>
+                <p class="card-text">Number of Votes: 69</p>
+                <a href="#" class="btn btn-primary"><i class="far fa-lightbulb"></i> Noice</a>
+            </div>
         </div>
-        <div class="answerDiv">
-            <p class="answerPara">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse amet optio ducimus
-                tempora.
-                Molestiae nulla debitis beatae eos dignissimos odit ea, assumenda consequuntur eum iure quisquam libero
-                ipsum similique porro! Esse maxime magni non sunt ex modi at iste excepturi consectetur voluptate id,
-                nesciunt corporis? Ea molestias voluptates veniam dolorum?</p>
-        </div>
-        <div class="answerDiv">
-            <p class="answerPara">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse amet optio ducimus
-                tempora.
-                Molestiae nulla debitis beatae eos dignissimos odit ea, assumenda consequuntur eum iure quisquam libero
-                ipsum similique porro! Esse maxime magni non sunt ex modi at iste excepturi consectetur voluptate id,
-                nesciunt corporis? Ea molestias voluptates veniam dolorum?</p>
-        </div>
+
         <div class="userAnswerDiv">
             <p class="userAnswerHeader">Have a Better Answer? Post it below.</p>
             <textarea name="userAnswer" id="userAnswer" cols="105" rows="5"></textarea>
-            <div id="submitAnswer">AnswerAway</div>
+            <a href="#" class="btn btn-primary"><i class="far fa-check-circle"></i> AnswerAway</a>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
