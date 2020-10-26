@@ -1,0 +1,76 @@
+html {
+	overflow: hidden;
+}
+
+body {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+.after-nav {
+	margin-bottom: 20px;
+}
+.jumbotron {
+	padding-bottom: 1em;
+	background: none;
+	margin-top: 0;
+	padding-top: 0;
+	text-shadow: 2px 2px 1px rgba(200, 200, 200, 1);
+	background: linear-gradient(#343a40cc, #ffffff00);
+}
+.lead {
+	font-weight: 400;
+}
+.navbar-custom {
+	background: linear-gradient(180deg, #343a40ff, #343a40cc);
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.nav-scroll {
+	background-color: #343a40;
+}
+
+.navbar-brand,
+.navbar-nav,
+.nav-link {
+	color: black;
+}
+.main-header {
+	margin-left: 1em;
+}
+.logo {
+	width: 2em;
+	height: 2em;
+}
+.card {
+	background: linear-gradient(
+		rgba(255, 255, 255, 0.7),
+		rgba(255, 255, 255, 0.7)
+	);
+
+	border: 2px solid grey;
+	border-radius: 5px;
+	margin: 10px 20px auto;
+}
+
+@media only screen and (max-device-width: 1000px) {
+	.jumbotron {
+		margin-top: 2em;
+	}
+}
+
+/* @media only screen and (max-device-width: 1336px) {
+	.after-nav {
+		background-attachment: scroll;
+		-webkit-background-size: contain;
+		-moz-background-size: contain;
+		-o-background-size: contain;
+		background-size: contain;
+	}
+} */

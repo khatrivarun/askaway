@@ -1,26 +1,54 @@
-{% extends "base_bg.html" %}
+{% extends "base_index.html" %}
 {% load widget_tweaks %}
+{% load static %}
+
+{% block styles %}
+
+<style>
+    .semi-body {
+        background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+            url("{% static 'img/find.png' %}");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        min-height: 100%;
+        min-width: 100%;
+    }
+
+
+
+
+</style>
+
+<link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+
+{% endblock %}
 
 {% block content %}
 
-<h1 class="main-header"><em>Newly Added Questions</em>:</h1>
+<div class="after-nav container">
+    <h2 class="main-header"><em>Newly Added Questions</em>:</h2>
 
-{% for question in questions %}
-<div class="card card-style">
-    <div class="card-header">
-        @{{ question.user.username }}
+    {% for question in questions %}
+    <div class="card card-style">
+        <div class="card-header">
+            @{{ question.user.username }}
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <a href="/questions/question/{{ question.slug }}">
+                    <p>{{ question.question }}</p>
+                </a>
+                <footer class="blockquote-footer">Description:
+                    <cite title="Source Title">{{ question.description }}</cite>
+                </footer>
+            </blockquote>
+        </div>
     </div>
-    <div class="card-body">
-        <blockquote class="blockquote mb-0">
-            <a href="/questions/question/{{ question.slug }}">
-                <p>{{ question.question }}</p>
-            </a>
-            <footer class="blockquote-footer">Description:
-                <cite title="Source Title">{{ question.description }}</cite>
-            </footer>
-        </blockquote>
-    </div>
+    {% endfor %}
 </div>
-{% endfor %}
-
 {% endblock %}

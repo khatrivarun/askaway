@@ -1,8 +1,9 @@
-{% extends "base_temp.html" %}
+{% extends "base.html" %}
 {% load widget_tweaks %}
 {% load static %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'css/base_temp.css' %}"/>
 <style>
     body {
         background: url(" {% static 'img/hiThere.jpg' %} ");
@@ -15,6 +16,7 @@
         background-size: contain;
         min-height: 100%;
     }
+
 </style>
 
 {% endblock %}

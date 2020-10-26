@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AnonymousUser
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.text import slugify
@@ -35,6 +36,7 @@ def list_single_question(request, slug):
     # Getting the question and its answers.
     question = get_object_or_404(Question, slug=slug)
     answers = Answer.objects.filter(question=question)
+    user = request.user
 
     # Loading Answer Form.
     answer_form = AnswerForm(request.POST or None)
@@ -45,11 +47,14 @@ def list_single_question(request, slug):
     # Converting it into a dictionary of answer_id to votes for ease.
     total_votes = {vote_['answer']: vote_['total_votes'] for vote_ in total_votes}
 
-    # Getting all the answers the user liked from the given list of answers
-    votes = Vote.objects.filter(user=request.user, answer__in=answers)
+    if not user.is_anonymous:
+        # Getting all the answers the user liked from the given list of answers
+        votes = Vote.objects.filter(user=user, answer__in=answers)
 
-    # Converting it into a list of answer_ids for ease.
-    user_votes = [vote_.answer for vote_ in votes]
+        # Converting it into a list of answer_ids for ease.
+        user_votes = [vote_.answer for vote_ in votes]
+    else:
+        user_votes = list()
 
     # Setting up the context and the template name to render on.
     context = {'question': question, 'answers': answers, 'voted': user_votes, 'total_votes': total_votes,
