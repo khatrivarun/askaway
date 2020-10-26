@@ -36,6 +36,9 @@ def list_single_question(request, slug):
     question = get_object_or_404(Question, slug=slug)
     answers = Answer.objects.filter(question=question)
 
+    # Loading Answer Form.
+    answer_form = AnswerForm(request.POST or None)
+
     # Getting total votes for each answer from the database.
     total_votes = Vote.objects.filter(answer__in=answers).values('answer').annotate(total_votes=Count('answer'))
 
@@ -49,7 +52,8 @@ def list_single_question(request, slug):
     user_votes = [vote_.answer for vote_ in votes]
 
     # Setting up the context and the template name to render on.
-    context = {'question': question, 'answers': answers, 'voted': user_votes, 'total_votes': total_votes}
+    context = {'question': question, 'answers': answers, 'voted': user_votes, 'total_votes': total_votes,
+               'form': answer_form}
     template_name = 'questions_answers/question.html'
 
     # Rendering the question and its answers.
@@ -175,7 +179,7 @@ def create_answer(request, slug):
     answer_form = AnswerForm(request.POST or None)
 
     # Checking if the form is valid.
-    if answer_form.is_valid():
+    if answer_form.is_valid() and request.method == "POST":
 
         # Gettting the form values.
         answer = answer_form.save(commit=False)
@@ -190,17 +194,6 @@ def create_answer(request, slug):
 
         # Redirecting to that specific question
         return redirect(f'/questions/question/{question.slug}')
-    else:
-
-        # Clean out the form on invalid values.
-        answer_form = AnswerForm()
-
-    # Setting up the template to render on and the context.
-    template_name = ''
-    context = {'form': answer_form}
-
-    # Rendering the form.
-    return render(request, template_name, context)
 
 
 @login_required
@@ -216,7 +209,6 @@ def delete_answer(request, slug, answer_id):
 
     # If the user confirmed the delete.
     if request.method == "POST":
-
         # Delete the answer
         answer.delete()
 

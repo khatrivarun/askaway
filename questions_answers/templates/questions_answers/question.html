@@ -1,6 +1,25 @@
-{% extends "base.html" %}
+{% extends "base_temp.html" %}
 {% load widget_tweaks %}
 {% load get_item %}
+{% load static %}
+
+{% block styles %}
+
+<style>
+    body {
+        background: url(" {% static 'img/answer_alt.jpg' %} ");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: contain;
+        min-height: 100%;
+    }
+</style>
+
+{% endblock %}
 
 {% block content %}
 
@@ -12,28 +31,64 @@
 
     {% for answer in answers %}
 
-    <div class="answerDiv">
-        <p class="answerPara">{{ answer.answer }}</p>
-        <form style="display: inline;" action="/questions/question/{{ question.slug }}/noice/{{ answer.id }}">
-            <button class="upvoteButton"><i class="far fa-lightbulb"></i>
-                {% if answer in voted %}
-                Noice'd
+    <div class="card">
+        <h5 class="card-header">By {{ answer.user.username }}</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{ answer.answer }}</h5>
+            <p class="card-text">
+                Number of Votes:
+                {% if answer.id in total_votes %}
+                {{total_votes|get_item:answer.id}}
                 {% else %}
-                Noice
+                0
                 {% endif %}
-            </button>
-        </form>
-        <span class="upvoteCounter">Number of Votes:
-            {% if answer.id in total_votes %}
-            {{total_votes|get_item:answer.id}}
-            {% else %}
-            0
+            </p>
+
+            <form style="display: inline;" action="/questions/question/{{ question.slug }}/noice/{{ answer.id }}">
+                <button class="btn btn-primary"><i class="far fa-lightbulb"></i>
+                    {% if answer in voted %}
+                    Noice'd
+                    {% else %}
+                    Noice
+                    {% endif %}
+                </button>
+            </form>
+
+            {% if user == answer.user %}
+            <p>My Own Answer</p>
             {% endif %}
-        </span>
-        <p class="answerer">By {{ answer.user.username }}</p>
+
+        </div>
     </div>
 
     {% endfor %}
+
+    <div class="userAnswerDiv">
+        <p class="userAnswerHeader">Have a Better Answer? Post it below.</p>
+
+        <form action="/questions/question/{{ question.slug }}/answer/" method="post">
+            {% csrf_token %}
+            <fieldset>
+                {% for field in form %}
+                {{ field.label_tag }} <br />
+                {{ field }}
+                {% for error in field.errors %}
+                <div style="color: red">{{ error }}</div>
+                {% endfor %}
+                {% endfor %}
+
+                {% for error in form.non_field_errors %}
+                <div style="color: red">{{ error }}</div>
+                {% endfor %}
+
+                <div class="form-group">
+                    <button class="btn btn-primary"><i class="far fa-check-circle"></i> AnswerAway</button>
+                </div>
+            </fieldset>
+        </form>
+
+
+    </div>
 </div>
 
 {% endblock %}
