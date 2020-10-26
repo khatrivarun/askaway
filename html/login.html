@@ -8,77 +8,92 @@
 			rel="stylesheet"
 			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 		/>
+		<link rel="stylesheet" href="login-style.css">
 	</head>
-	<body>
-		<nav
-			class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top"
-		>
-			<a class="navbar-brand" href="index.html"
-				><img src="ask.png" alt="logo" style="width: 2em;height: 2em;"> AskAway</a
+	<body class="login-body">
+		<div class="login-div">
+			<nav
+				class="navbar navbar-expand-lg navbar-dark navbar-custom"
 			>
-			<button
-				class="navbar-toggler"
-				type="button"
-				data-toggle="collapse"
-				data-target="#collapsingContent"
-				aria-controls="collapsingContent"
-				aria-expanded="false"
-				aria-label="Toggle navigation"
-			>
-				<span class="navbar-toggler-icon"></span>
-			</button>
+				<a class="navbar-brand" href="index.html"
+					><img src="ask.png" alt="logo" style="width: 2em;height: 2em;"> AskAway</a
+				>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#collapsingContent"
+					aria-controls="collapsingContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-			<div class="collapse navbar-collapse" id="collapsingContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="index.html" title="Click here to go to the Home Page."
-							>Home</a
-						>
-					</li>
-				</ul>
-				<ul class="nav navbar-nav ml-auto">
-					<li class="nav-item">
-						<a class="nav-link active" href="" title="Click here to Login.">Login <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="register.html" title="Click here to Sign Up.">Sign Up</a>
-					</li>
-				</ul>
+				<div class="collapse navbar-collapse" id="collapsingContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html" title="Click here to go to the Home Page."
+								>Home</a
+							>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link active" href="" title="Click here to Login.">Login <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="register.html" title="Click here to Sign Up.">Sign Up</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container align-self-center">
+					<h1 class="display-4">
+						<img src="ask_1.png" alt="logo"> AskAway
+					</h1>
+					<p class="lead">
+						The perfect place to find the answer to all your burning
+						questions!
+			
+					</p>
+				</div>
 			</div>
-		</nav>
-		<h1 style="text-align: center">Login</h1>
-		<div style="width: 20%; margin: 30px auto">
-			<form action="/login" method="POST">
-				<div class="form-group">
-					<label for="email">Email</label>
-					<input
-						type="email"
-						name="email"
-						placeholder="Email"
-						class="form-control"
-					/>
-				</div>
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input
-						type="password"
-						name="password"
-						placeholder="Password"
-						class="form-control"
-					/>
-				</div>
-				<div class="form-group">
-					<button
-						class="btn btn-lg btn-default btn-block btn-primary"
-					>
-						Login!
-					</button>
-				</div>
-			</form>
-			<a href="index.html">Go Back</a>
-			<a href="register.html" style="float: right;">New User? Sign up here.</a>
-		</div>
 		
+		<div class="mainDiv">
+			<h1 style="text-align: center">Login</h1>
+				<form action="/login" method="POST">
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input
+							type="email"
+							name="email"
+							placeholder="Email"
+							class="form-control"
+						/>
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input
+							type="password"
+							name="password"
+							placeholder="Password"
+							class="form-control"
+						/>
+					</div>
+					<div class="form-group">
+						<button
+							class="btn btn-lg btn-default btn-block btn-primary"
+						>
+							Login!
+						</button>
+					</div>
+				</form>
+				<a href="index.html">Go Back</a>
+				<a href="register.html" style="float: right;">New User? Sign up here.</a>
+			</div>
+		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
