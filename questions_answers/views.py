@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.text import slugify
+from django.db.models import Count
 import uuid
 
 from .forms import QuestionForm, AnswerForm
-from .models import Question, Answer
+from .models import Question, Answer, Vote
 
 
 def list_questions(request):
@@ -17,7 +18,14 @@ def list_questions(request):
 def list_single_question(request, slug):
     question = get_object_or_404(Question, slug=slug)
     answers = Answer.objects.filter(question=question)
-    context = {'question': question, 'answers': answers}
+
+    total_votes = Vote.objects.filter(answer__in=answers).values('answer').annotate(total_votes=Count('answer'))
+    total_votes = {vote['answer']: vote['total_votes'] for vote in total_votes}
+
+    votes = Vote.objects.filter(user=request.user, answer__in=answers)
+    user_votes = [vote.answer for vote in votes]
+
+    context = {'question': question, 'answers': answers, 'voted': user_votes, 'total_votes': total_votes}
     template_name = 'questions_answers/question.html'
     return render(request, template_name, context)
 

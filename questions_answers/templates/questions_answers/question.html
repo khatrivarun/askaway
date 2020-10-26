@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load widget_tweaks %}
+{% load get_item %}
 
 {% block content %}
 
@@ -13,6 +14,19 @@
 
     <div class="answerDiv">
         <p class="answerPara">{{ answer.answer }}</p>
+
+        {% if answer.id in total_votes %}
+        <p>{{total_votes|get_item:answer.id}} votes</p>
+        {% else %}
+        <p>0 votes</p>
+        {% endif %}
+
+        {% if answer in voted %}
+        <p>Voted</p>
+        {% else %}
+        <p>Not Voted</p>
+        {% endif %}
+
         <p class="answerer">By {{ answer.user.first_name }} {{ answer.user.last_name }}</p>
     </div>
 
