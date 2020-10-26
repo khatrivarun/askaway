@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import update_session_auth_hash, logout
 from .forms import RegistrationForm, UpdateForm, DeleteAccountForm
+from questions_answers.models import Question, Answer, Vote
+from django.db.models import Count
 
 
 def register(request):
@@ -63,6 +65,79 @@ def update(request):
     context = {"form": form}
 
     # Rendering the form.
+    return render(request, template_name, context)
+
+
+@login_required
+def view_me(request):
+    """
+    Display User and their questions and answers
+    """
+
+    # Getting the user.
+    user = request.user
+
+    # Getting their questions.
+    questions = Question.objects.filter(user=user)
+
+    # Getting number of answers per questions.
+    total_answers = Answer.objects.filter(question__in=questions).values('question_id').annotate(
+        total_answers=Count('question_id'))
+
+    # Converting it into a dictionary of question_id to answers for ease.
+    total_answers = {answer_['question_id']: answer_['total_answers'] for answer_ in total_answers}
+
+    # Getting their answers.
+    answers = Answer.objects.filter(user=user)
+
+    # Getting votes per each answer.
+    total_votes = Vote.objects.filter(answer__in=answers).values('answer').annotate(total_votes=Count('answer'))
+
+    # Converting it into a dictionary of answer_id to votes for ease.
+    total_votes = {vote_['answer']: vote_['total_votes'] for vote_ in total_votes}
+
+    # Setting up the context and the template name to render on.
+    context = {'questions': questions, 'answers': answers, 'display_user': user, 'total_answers': total_answers,
+               'total_votes': total_votes}
+    template_name = 'user/user.html'
+
+    # Rendering the question and its answers.
+    return render(request, template_name, context)
+
+
+def view_user(request, username):
+    """
+    Display User and their questions and answers
+    """
+
+    # Getting the user.
+    user = get_object_or_404(User, username=username)
+
+    # Getting their questions.
+    questions = Question.objects.filter(user=user)
+
+    # Getting number of answers per questions.
+    total_answers = Answer.objects.filter(question__in=questions).values('question_id').annotate(
+        total_answers=Count('question_id'))
+
+    # Converting it into a dictionary of question_id to answers for ease.
+    total_answers = {answer_['question_id']: answer_['total_answers'] for answer_ in total_answers}
+
+    # Getting their answers.
+    answers = Answer.objects.filter(user=user)
+
+    # Getting votes per each answer.
+    total_votes = Vote.objects.filter(answer__in=answers).values('answer').annotate(total_votes=Count('answer'))
+
+    # Converting it into a dictionary of answer_id to votes for ease.
+    total_votes = {vote_['answer']: vote_['total_votes'] for vote_ in total_votes}
+
+    # Setting up the context and the template name to render on.
+    context = {'questions': questions, 'answers': answers, 'display_user': user, 'total_answers': total_answers,
+               'total_votes': total_votes}
+    template_name = 'user/user.html'
+
+    # Rendering the question and its answers.
     return render(request, template_name, context)
 
 

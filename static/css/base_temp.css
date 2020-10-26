@@ -6,6 +6,14 @@
 	margin-bottom: 20px;
 }
 
+.userDataDiv {
+	width: 80%;
+	margin: auto;
+	/* border: 2px solid red; */
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
 .navbar-custom {
 	background: linear-gradient(180deg, #343a40ff, #343a40cc);
 }
@@ -122,4 +130,19 @@ textarea {
 	margin: 0 auto;
 	padding: 10px 20px;
 	background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75));
+}
+
+.headerTags {
+	margin-bottom: 5px;
+}
+
+.deleteAnswerButton {
+	/* border: 2px solid black; */
+	padding: 0;
+	width: 75px;
+	height: max-content;
+	float: right;
+	display: inline;
+	margin-top: 15px;
+	/* margin-right: -3px; */
 }

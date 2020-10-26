@@ -41,6 +41,7 @@
                         Hello {{ user.first_name }} {{ user.last_name }}
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/user/me">View Me</a>
                         <a class="dropdown-item" href="/questions/create">Create A New Question</a>
                         <a class="dropdown-item" href="/user/update">Update User Details</a>
                         <a class="dropdown-item" href="/user/update_password">Update Password</a>
@@ -73,7 +74,7 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container align-self-center">
         <h1 class="display-4">
-            <img src="{% static 'img/ask.png' %}" alt="logo"> AskAway
+            <img src="{% static 'img/ask_1.png' %}" alt="logo"> AskAway
         </h1>
         <p class="lead">
             The perfect place to find the answer to all your burning

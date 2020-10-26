@@ -129,7 +129,7 @@ def update_single_question(request, slug):
     else:
 
         # Clean out the form on invalid values.
-        question_form = QuestionForm()
+        question_form = QuestionForm(instance=question)
 
     # Setting up context and template to render on.
     context = {'form': question_form}
@@ -184,7 +184,6 @@ def create_answer(request, slug):
 
     # Checking if the form is valid.
     if answer_form.is_valid() and request.method == "POST":
-
         # Gettting the form values.
         answer = answer_form.save(commit=False)
 

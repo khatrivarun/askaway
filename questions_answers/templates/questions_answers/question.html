@@ -18,6 +18,14 @@
         min-height: 100%;
     }
 
+
+
+
+
+
+
+
+
 </style>
 
 {% endblock %}
@@ -27,13 +35,21 @@
 <div class="qAndA">
     <div class="questionDiv">
         <p class="questionPara">{{ question.question }}</p>
-        <p class="questioner">By {{ question.user.username }}</p>
+        <p class="questioner">
+            <a href="/user/view/{{ question.user.username }}">
+                By {{ question.user.username }}
+            </a>
+        </p>
     </div>
 
     {% for answer in answers %}
 
     <div class="card">
-        <h5 class="card-header">By {{ answer.user.username }}</h5>
+        <h5 class="card-header">By
+            <a href="/user/view/{{ answer.user.username }}">
+                {{ answer.user.username }}
+            </a>
+        </h5>
         <div class="card-body">
             <h5 class="card-title">{{ answer.answer }}</h5>
             <p class="card-text">
@@ -56,7 +72,13 @@
             </form>
 
             {% if user == answer.user %}
-            <p>My Own Answer</p>
+            <form action="/questions/question/{{ question.slug }}/answer/{{ answer.id }}/delete/" method="post">
+                {% csrf_token %}
+                <button class="btn btn-danger btn-sm deleteAnswerButton">
+                    <i class="fas fa-eraser"></i>
+                    Erase
+                </button>
+            </form>
             {% endif %}
 
         </div>
