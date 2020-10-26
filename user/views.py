@@ -13,7 +13,7 @@ def register(request):
 
     if form.is_valid():
         form.save()
-        redirect('/')
+        redirect('/index')
     else:
         form = RegistrationForm()
 
@@ -45,7 +45,7 @@ def update(request):
 
     if form.is_valid():
         form.save()
-        redirect('/')
+        redirect('/index')
     else:
         form = UpdateForm(request.POST or None, instance=user)
 
@@ -60,7 +60,7 @@ def update_password(request):
     if form.is_valid():
         user = form.save()
         update_session_auth_hash(request, user)
-        return redirect('/')
+        return redirect('/index')
     else:
         form = PasswordChangeForm(request.user)
 

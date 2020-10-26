@@ -127,9 +127,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-LOGIN_REDIRECT_URL = '/questions/all/'
-LOGOUT_REDIRECT_URL = '/user/login/'
-LOGIN_URL = '/user/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/user/login'
+LOGIN_URL = '/user/login'
 
 pymysql.version_info = (1, 4, 2, "final", 0)
 pymysql.install_as_MySQLdb()
