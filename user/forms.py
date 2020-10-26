@@ -1,6 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
 from django import forms
 
 
@@ -48,36 +47,6 @@ class RegistrationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'email',)
-
-
-class LoginForm(forms.Form):
-    username = forms.CharField(
-        max_length=255,
-        required=True,
-        widget=forms.TextInput(attrs={'placeholder': 'Username'}),
-        label='Username',
-    )
-
-    password = forms.CharField(
-        max_length=255,
-        required=True,
-        widget=forms.PasswordInput(attrs={'placeholder': 'Password'}),
-        label='Password',
-    )
-
-    def clean(self):
-        username = self.cleaned_data.get('username')
-        password = self.cleaned_data.get('password')
-        user = authenticate(username=username, password=password)
-        if not user or not user.is_active:
-            raise forms.ValidationError("Wrong username or password entered. Please try again")
-
-        return self.cleaned_data
-
-    def login(self, request):
-        username = self.cleaned_data.get('username')
-        password = self.cleaned_data.get('password')
-        return authenticate(username=username, password=password)
 
 
 class UpdateForm(forms.ModelForm):
