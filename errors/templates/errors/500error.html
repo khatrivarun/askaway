@@ -1,13 +1,15 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>403 Forbidden Page</title>
+    <title>500 Internal Server Error</title>
     <style>
         body {
-            background: url('403error.jpg');
+            background: url(" {% static 'img/500error.jpg' %} ");
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
