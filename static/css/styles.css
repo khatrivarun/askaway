@@ -22,6 +22,7 @@ body {
 .lead {
 	font-weight: 400;
 }
+
 .navbar-custom {
 	background: linear-gradient(180deg, #343a40ff, #343a40cc);
 	margin-bottom: 0;
@@ -53,12 +54,6 @@ body {
 	border: 2px solid grey;
 	border-radius: 5px;
 	margin: 10px 20px auto;
-}
-
-@media only screen and (max-device-width: 1000px) {
-	.jumbotron {
-		margin-top: 2em;
-	}
 }
 
 /* @media only screen and (max-device-width: 1336px) {
