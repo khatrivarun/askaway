@@ -43,3 +43,30 @@ body {
 	border-radius: 5px;
 	background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
 }
+
+.deleteAnswerButton {
+	float: right;
+	display: inline;
+	margin: 1px 2px 1px 2px;
+}
+
+.editButton {
+	float: right;
+	display: inline;
+	margin: 1px 2px 1px 2px;
+}
+
+footer {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: linear-gradient(rgba(52, 58, 64, 0.01), rgba(52, 58, 64, 1));
+}
+
+.copyrightP {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.opacityFooter {
+	color: rgba(255, 255, 255, 0.9);
+}
