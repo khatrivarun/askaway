@@ -72,8 +72,31 @@
                 <p class="card-text">Number of Votes: 69</p>
                 <div class="buttons">
                     <a href="#" class="btn btn-primary"><i class="far fa-lightbulb"></i> Noice</a>
-                    <a href="#" class="btn btn-danger btn-sm deleteAnswerButton"><i class="fas fa-eraser"></i>
+                    <a href="#" class="btn btn-danger deleteAnswerButton" data-toggle="modal"
+                        data-target="#eraseAnswerModal"><i class="fas fa-eraser"></i>
                         Erase</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="eraseAnswerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Erase Answer</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to Erase this Answer?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger"><i class="fas fa-eraser"></i>
+                            Erase</button>
+                    </div>
                 </div>
             </div>
         </div>
