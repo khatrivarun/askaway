@@ -69,12 +69,6 @@ body {
 	margin: 10px 20px auto;
 }
 
-@media only screen and (max-device-width: 1000px) {
-	.jumbotron {
-		margin-top: 2em;
-	}
-}
-
 /* @media only screen and (max-device-width: 1336px) {
 	.after-nav {
 		background-attachment: scroll;

@@ -1,6 +1,6 @@
-html {
+/* html {
 	overflow: hidden;
-}
+} */
 
 body {
 	margin: 0;
@@ -10,6 +10,10 @@ body {
 html,
 body {
 	height: 100%;
+}
+
+.form-css {
+	margin-bottom: 20px;
 }
 .login-div {
 	background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
@@ -66,10 +70,4 @@ body {
 .logo {
 	width: 2em;
 	height: 2em;
-}
-
-@media only screen and (max-device-width: 1000px) {
-	.jumbotron {
-		margin-top: 2em;
-	}
 }
