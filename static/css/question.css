@@ -6,16 +6,25 @@
 	margin-bottom: 20px;
 }
 
-.userDataDiv {
-	width: 80%;
-	margin: auto;
-	/* border: 2px solid red; */
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
 .navbar-custom {
 	background: linear-gradient(180deg, #343a40ff, #343a40cc);
+}
+
+body {
+	background: url('answer_alt.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: contain;
+	min-height: 100%;
+}
+
+.deleteAnswerButton {
+	float: right;
+	display: inline;
 }
 
 .jumbotron {
@@ -37,18 +46,6 @@
 	overflow: auto;
 	border-radius: 5px;
 	background: linear-gradient(rgba(221, 221, 221, 0.7), rgba(221, 221, 221, 0.7));
-}
-
-.upvoteButton {
-	width: max-content;
-	border: 1px solid gray;
-	padding: 1px 2px 1px 2px;
-	border-radius: 5px;
-	display: inline;
-}
-
-.upvoteButton:hover {
-	background-color: rgb(212, 212, 212);
 }
 
 .upvoteCounter {
@@ -111,38 +108,17 @@ textarea {
 	background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
 }
 
-#submitAnswer {
-	width: max-content;
-	border: 1px solid gray;
-	padding: 2px 4px 2px 4px;
-	border-radius: 5px;
-	display: inline;
+footer {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: linear-gradient(rgba(52, 58, 64, 0.01), rgba(52, 58, 64, 1));
 }
 
-#submitAnswer:hover {
-	background-color: rgb(212, 212, 212);
+.copyrightP {
+	color: rgba(255, 255, 255, 0.7);
 }
 
-.mainDiv {
-	border: 2px solid gray;
-	border-radius: 5px;
-	width: 40%;
-	margin: 0 auto;
-	padding: 10px 20px;
-	background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75));
-}
-
-.headerTags {
-	margin-bottom: 5px;
-}
-
-.deleteAnswerButton {
-	/* border: 2px solid black; */
-	padding: 0;
-	width: 75px;
-	height: max-content;
-	float: right;
-	display: inline;
-	margin-top: 15px;
-	/* margin-right: -3px; */
+.opacityFooter {
+	color: rgba(255, 255, 255, 0.9);
 }

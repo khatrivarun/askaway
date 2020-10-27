@@ -1,0 +1,60 @@
+.navbar-custom {
+	background: linear-gradient(180deg, #343a40ff, #343a40cc);
+}
+
+.userDataDiv {
+	width: 80%;
+	margin: auto;
+	/* border: 2px solid red; */
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.headerTags {
+	margin-bottom: 5px;
+}
+
+.jumbotron {
+	padding-bottom: 1em;
+	padding-top: 0;
+	/* margin-top: 1em; */
+	background: none;
+	text-shadow: 2px 2px 1px rgba(200, 200, 200, 1);
+	/* color: #343a40 */
+	background: linear-gradient(#343a40cc, #ffffff00);
+}
+
+.card {
+	border: 2px solid gray;
+	margin: 10px 20px auto;
+	overflow: auto;
+	border-radius: 5px;
+	background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+}
+
+.deleteAnswerButton {
+	float: right;
+	display: inline;
+	margin: 1px 2px 1px 2px;
+}
+
+.editButton {
+	float: right;
+	display: inline;
+	margin: 1px 2px 1px 2px;
+}
+
+footer {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: linear-gradient(rgba(52, 58, 64, 0.01), rgba(52, 58, 64, 1));
+}
+
+.copyrightP {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.opacityFooter {
+	color: rgba(255, 255, 255, 0.9);
+}
