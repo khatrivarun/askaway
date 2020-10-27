@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 # Question Relation
 class Question(models.Model):
-    slug = models.SlugField(unique=True, null=False)
+    slug = models.SlugField(unique=True, null=False, max_length=255)
     question = models.CharField(null=False, max_length=255)
     description = models.TextField(null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
