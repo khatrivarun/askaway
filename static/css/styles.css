@@ -22,6 +22,7 @@ body {
 .lead {
 	font-weight: 400;
 }
+
 .navbar-custom {
 	background: linear-gradient(180deg, #343a40ff, #343a40cc);
 	margin-bottom: 0;
