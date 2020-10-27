@@ -7,7 +7,21 @@ html,
 body {
 	height: 100%;
 }
+footer {
+	position: relative;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: linear-gradient(rgba(52, 58, 64, 0.01), rgba(52, 58, 64, 1));
+}
 
+.copyrightP {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.opacityFooter {
+	color: rgba(255, 255, 255, 0.9);
+}
 .after-nav {
 	margin-bottom: 20px;
 }
