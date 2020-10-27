@@ -16,6 +16,7 @@
 	width: 40%;
 	margin: 0 auto;
 	padding: 10px 20px;
+	margin-bottom: 30px;
 	background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75));
 }
 
@@ -39,4 +40,19 @@ body {
 	text-shadow: 2px 2px 1px rgba(200, 200, 200, 1);
 	/* color: #343a40 */
 	background: linear-gradient(#343a40cc, #ffffff00);
+}
+
+footer {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: linear-gradient(rgba(52, 58, 64, 0.01), rgba(52, 58, 64, 1));
+}
+
+.copyrightP {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.opacityFooter {
+	color: rgba(255, 255, 255, 0.9);
 }

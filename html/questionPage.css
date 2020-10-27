@@ -108,14 +108,17 @@ textarea {
 	background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
 }
 
-#submitAnswer {
-	width: max-content;
-	border: 1px solid gray;
-	padding: 2px 4px 2px 4px;
-	border-radius: 5px;
-	display: inline;
+footer {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: linear-gradient(rgba(52, 58, 64, 0.01), rgba(52, 58, 64, 1));
 }
 
-#submitAnswer:hover {
-	background-color: rgb(212, 212, 212);
+.copyrightP {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.opacityFooter {
+	color: rgba(255, 255, 255, 0.9);
 }
