@@ -16,7 +16,7 @@
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: contain;
-	min-height: 100%;
+	/* min-height: 100%; */
 }
 
 
@@ -31,99 +31,112 @@
     <h1>{{ display_user.first_name }} {{ display_user.last_name }}</h1>
     <h3 class="headerTags">Questions by {{ display_user.first_name }} {{ display_user.last_name }}</h3>
 
-    {% for question in questions %}
-    <div class="questionsByUser">
-        <div class="card">
-            <div class="card-header">
-                {% if question.id in total_answers %}
-                {{total_answers|get_item:question.id}}
-                {% else %}
-                0
-                {% endif %}
-                Answers.
-            </div>
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <p>
-                        <a href="/questions/question/{{ question.slug }}">
-                            {{ question.question }}
-                        </a>
-                    </p>
+    {% if questions|length > 0 %}
+        {% for question in questions %}
+        <div class="questionsByUser">
+            <div class="card">
+                <div class="card-header">
+                    {% if question.id in total_answers %}
+                    {{total_answers|get_item:question.id}}
+                    {% else %}
+                    0
+                    {% endif %}
+                    Answers.
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>
+                            <a href="/questions/question/{{ question.slug }}">
+                                {{ question.question }}
+                            </a>
+                        </p>
 
-                    {% if user == question.user %}
+                        {% if user == question.user %}
 
-                    <div class="buttons">
-                        <button class="btn btn-danger deleteAnswerButton" data-toggle="modal"
-                                data-target="#eraseQuestionModal{{ question.slug }}" role="button"><i
-                                class="fas fa-eraser"></i>
-                            Erase
-                        </button>
+                        <div class="buttons">
+                            <button class="btn btn-danger deleteAnswerButton" data-toggle="modal"
+                                    data-target="#eraseQuestionModal{{ question.slug }}" role="button"><i
+                                    class="fas fa-eraser"></i>
+                                Erase
+                            </button>
 
-                        <a href="/questions/question/{{ question.slug }}/update/" role="button"
-                           class="btn btn-warning editButton" data-whatever="@mdo"><i class="fas fa-pencil-alt"></i>
-                            Edit</a>
-                    </div>
+                            <a href="/questions/question/{{ question.slug }}/update/" role="button"
+                            class="btn btn-warning editButton" data-whatever="@mdo"><i class="fas fa-pencil-alt"></i>
+                                Edit</a>
+                        </div>
 
-                    <div class="modal fade" id="eraseQuestionModal{{ question.slug }}" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Erase Question</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    Are you sure you want to Erase this Question?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close
-                                    </button>
-                                    <form method="post" action="/questions/question/{{ question.slug }}/delete/">
-                                        {% csrf_token %}
-                                        <button class="btn btn-danger"><i class="fas fa-eraser"></i>
-                                            Erase
+                        <div class="modal fade" id="eraseQuestionModal{{ question.slug }}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Erase Question</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
                                         </button>
-                                    </form>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to Erase this Question?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close
+                                        </button>
+                                        <form method="post" action="/questions/question/{{ question.slug }}/delete/">
+                                            {% csrf_token %}
+                                            <button class="btn btn-danger"><i class="fas fa-eraser"></i>
+                                                Erase
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {% endif %}
-                </blockquote>
+                        {% endif %}
+                    </blockquote>
+                </div>
             </div>
         </div>
-    </div>
-    {% endfor %}
-
+        {% endfor %}
+    {% else %}
+        <div style="margin: 40px 30px;">
+            <h5 class="lead">User has no questions to AskAway :(</h6>
+        </div>
+    {% endif %}
     <br>
 
     <h3 class="headerTags">Answers by {{ display_user.first_name }} {{ display_user.last_name }}</h3>
 
-    {% for answer in answers %}
-    <div class="answersByUser">
-        <div class="card">
-            <h5 class="card-header">{{ answer.question.question }}</h5>
-            <div class="card-body">
-                <h5 class="card-title">{{ answer.answer }}</h5>
-                <p class="card-text">
-                    Number of Upvotes:
-                    {% if answer.id in total_votes %}
-                    {{total_votes|get_item:answer.id}}
-                    {% else %}
-                    0
-                    {% endif %}
-                </p>
-                <a href="/questions/question/{{ answer.question.slug }}" class="btn btn-primary">
-                    <i class="far fa-arrow-alt-circle-right"></i>
-                    Go to Question.
-                </a>
+
+    {% if answers|length > 0 %}
+        {% for answer in answers %}
+        <div class="answersByUser">
+            <div class="card">
+                <h5 class="card-header">{{ answer.question.question }}</h5>
+                <div class="card-body">
+                    <h5 class="card-title">{{ answer.answer }}</h5>
+                    <p class="card-text">
+                        Number of Upvotes:
+                        {% if answer.id in total_votes %}
+                        {{total_votes|get_item:answer.id}}
+                        {% else %}
+                        0
+                        {% endif %}
+                    </p>
+                    <a href="/questions/question/{{ answer.question.slug }}" class="btn btn-primary">
+                        <i class="far fa-arrow-alt-circle-right"></i>
+                        Go to Question.
+                    </a>
+                </div>
             </div>
         </div>
+        {% endfor %}
+
+    {% else %}
+    <div style="margin: 40px 30px;">
+        <h5 class="lead">User has never AnsweredAway :(</h6>
     </div>
-    {% endfor %}
+    {% endif %}
 </div>
 
 {% endblock %}
