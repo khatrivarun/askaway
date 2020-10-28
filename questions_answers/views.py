@@ -95,7 +95,7 @@ def create_question(request):
     else:
 
         # Clean the form on invalid inputs
-        question_form = QuestionForm()
+        question_form = QuestionForm(request.POST or None)
 
     # Setting up context and template to render on.
     template_name = 'questions_answers/create_question.html'
@@ -129,7 +129,7 @@ def update_single_question(request, slug):
     else:
 
         # Clean out the form on invalid values.
-        question_form = QuestionForm(instance=question)
+        question_form = QuestionForm(request.POST or None, instance=question)
 
     # Setting up context and template to render on.
     context = {'form': question_form}

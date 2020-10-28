@@ -40,10 +40,10 @@ class RegistrationForm(UserCreationForm):
         # If user exists based on the email address or username,
         # raise validation error.
         if user_email:
-            self._errors["email"] = "Email address is already associated with another account"
+            self._errors["email"] = ["Email address is already associated with another account"]
 
         if user_uname:
-            self._errors["username"] = "Usename is already associated with another account"
+            self._errors["username"] = ["Usename is already associated with another account"]
 
     class Meta:
         model = User

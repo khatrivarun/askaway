@@ -148,7 +148,7 @@ def update_password(request):
     """
 
     # Preparing the form
-    form = PasswordChangeForm(request.user, request.POST)
+    form = PasswordChangeForm(request.user, request.POST or None)
 
     # Checking if the form is valid
     if form.is_valid():
@@ -164,7 +164,7 @@ def update_password(request):
     else:
 
         # Cleaning out invalid values
-        form = PasswordChangeForm(request.user)
+        form = PasswordChangeForm(request.user, request.POST or None)
 
     # Setting up the template to render on and context
     template_name = "user/update_password.html"
@@ -199,7 +199,7 @@ def delete_account(request):
         return redirect('/user/register')
     else:
         # Cleaning out invalid values
-        form = DeleteAccountForm()
+        form = DeleteAccountForm(request.POST or None)
 
     # Setting up the template to render on and context
     template_name = "user/delete_account.html"
