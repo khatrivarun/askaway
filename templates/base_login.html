@@ -70,7 +70,7 @@
             {% else %}
 
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/user/login/">Login</a>
                 </li>
                 <li class="nav-item">
@@ -104,9 +104,11 @@
                 <div class="col-4 offset-1 col-sm-2">
                     <h5>Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="opacityFooter">Home</a></li>
-                        <li><a href="login.html" class="opacityFooter">Login</a></li>
-                        <li><a href="register.html" class="opacityFooter">Sign Up</a></li>
+                        <li><a href="/" class="opacityFooter">Home</a></li>
+                        {% if not user.is_authenticated %}
+                        <li><a href="/user/login/" class="opacityFooter">Login</a></li>
+                        <li><a href="/user/register/" class="opacityFooter">Sign Up</a></li>
+                        {% endif %}
                     </ul>
                 </div>
                 <div class="col-7 col-sm-5">
@@ -142,6 +144,21 @@
     </footer>
 
 </div>
+<script>
+    if (document.body.clientHeight <= screen.height){
+    
+        
+        document.querySelector("footer").classList.add("pos-fixed");
+        document.querySelector("footer").classList.remove("pos-relative");
+
+    }
+
+    else{
+        
+        document.querySelector("footer").classList.remove("pos-fixed");
+        document.querySelector("footer").classList.add("pos-relative");
+    }
+</script>
 <script src="https://kit.fontawesome.com/ba5d62628a.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

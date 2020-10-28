@@ -15,5 +15,5 @@ class AnswerForm(ModelForm):
         model = Answer
         fields = ['answer']
         widgets = {
-            'answer': Textarea(attrs={'rows': 5, 'cols': 125})
+            'answer': Textarea(attrs={'rows': 5, 'cols': 106})
         }
