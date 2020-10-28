@@ -10,8 +10,8 @@
 	background: linear-gradient(180deg, #343a40ff, #343a40cc);
 }
 
-body {
-	background: url('answer_alt.jpg');
+/* body {
+	background: url("answer_alt.jpg");
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -20,7 +20,7 @@ body {
 	-o-background-size: cover;
 	background-size: contain;
 	min-height: 100%;
-}
+} */
 
 .deleteAnswerButton {
 	float: right;
@@ -45,7 +45,10 @@ body {
 	/* background-color: rgb(224, 224, 224); */
 	overflow: auto;
 	border-radius: 5px;
-	background: linear-gradient(rgba(221, 221, 221, 0.7), rgba(221, 221, 221, 0.7));
+	background: linear-gradient(
+		rgba(221, 221, 221, 0.7),
+		rgba(221, 221, 221, 0.7)
+	);
 }
 
 .upvoteCounter {
@@ -75,7 +78,10 @@ body {
 	margin: 10px 20px auto;
 	overflow: auto;
 	border-radius: 5px;
-	background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+	background: linear-gradient(
+		rgba(255, 255, 255, 0.7),
+		rgba(255, 255, 255, 0.7)
+	);
 }
 
 .card-header {
@@ -96,7 +102,10 @@ body {
 	background-color: rgb(255, 255, 255);
 	overflow: auto;
 	border-radius: 5px;
-	background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+	background: linear-gradient(
+		rgba(255, 255, 255, 0.7),
+		rgba(255, 255, 255, 0.7)
+	);
 }
 
 .userAnswerHeader {
@@ -105,7 +114,10 @@ body {
 }
 
 textarea {
-	background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
+	background: linear-gradient(
+		rgba(255, 255, 255, 0.6),
+		rgba(255, 255, 255, 0.6)
+	);
 }
 
 footer {
@@ -114,7 +126,12 @@ footer {
 	width: 100%;
 	background: linear-gradient(rgba(52, 58, 64, 0.01), rgba(52, 58, 64, 1));
 }
-
+.pos-fixed {
+	position: fixed;
+}
+.pos-relative {
+	position: relative;
+}
 .copyrightP {
 	color: rgba(255, 255, 255, 0.7);
 }
