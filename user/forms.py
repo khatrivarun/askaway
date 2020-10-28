@@ -1,31 +1,26 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django import forms
 
 
 # User Registration Form
 class RegistrationForm(UserCreationForm):
-
     # First name field
     first_name = forms.CharField(
         widget=forms.TextInput(),
         max_length=255,
-        help_text='First name'
     )
 
     # Last name field
     last_name = forms.CharField(
         widget=forms.TextInput(),
         max_length=255,
-        help_text='Last name'
     )
 
     # Email field
     email = forms.EmailField(
         widget=forms.EmailInput(),
         max_length=255,
-        help_text='Enter a valid email address'
     )
 
     def clean(self):
@@ -52,7 +47,7 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2']
+        fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'email')
 
 
 class UpdateForm(forms.ModelForm):
