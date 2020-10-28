@@ -27,7 +27,7 @@ def register(request):
     else:
 
         # Clean form in case of invalid inputs
-        form = RegistrationForm()
+        form = RegistrationForm(request.POST or None)
 
     # Setting up the template to render on and context
     template_name = "user/register.html"

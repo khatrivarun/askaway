@@ -1,47 +1,26 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
 from django import forms
 
 
 # User Registration Form
 class RegistrationForm(UserCreationForm):
-    # Username field
-    username = forms.CharField(
-        widget=forms.TextInput(attrs={'placeholder': 'Username'})
-    )
-
     # First name field
     first_name = forms.CharField(
-        widget=forms.TextInput(attrs={'placeholder': 'First Name'}),
-        max_length=32,
-        help_text='First name'
+        widget=forms.TextInput(),
+        max_length=255,
     )
 
     # Last name field
     last_name = forms.CharField(
-        widget=forms.TextInput(attrs={'placeholder': 'Last Name'}),
-        max_length=32,
-        help_text='Last name'
+        widget=forms.TextInput(),
+        max_length=255,
     )
 
     # Email field
     email = forms.EmailField(
-        widget=forms.EmailInput(attrs={'placeholder': 'Email'}),
-        max_length=64,
-        help_text='Enter a valid email address'
-    )
-
-    # Password Field
-    password1 = forms.CharField(
-        label='Password',
-        widget=forms.PasswordInput(attrs={'placeholder': 'Password'}),
-    )
-
-    # Password Again Field
-    password2 = forms.CharField(
-        label='Password Again',
-        widget=forms.PasswordInput(attrs={'placeholder': 'Password Again'})
+        widget=forms.EmailInput(),
+        max_length=255,
     )
 
     def clean(self):
@@ -61,14 +40,14 @@ class RegistrationForm(UserCreationForm):
         # If user exists based on the email address or username,
         # raise validation error.
         if user_email:
-            raise forms.ValidationError("Email address is already taken")
+            self._errors["email"] = "Email address is already associated with another account"
 
         if user_uname:
-            raise forms.ValidationError("Username is already taken")
+            self._errors["username"] = "Usename is already associated with another account"
 
-    class Meta(UserCreationForm.Meta):
+    class Meta:
         model = User
-        fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'email',)
+        fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'email')
 
 
 class UpdateForm(forms.ModelForm):
